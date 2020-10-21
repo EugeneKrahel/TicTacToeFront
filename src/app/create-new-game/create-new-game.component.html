@@ -1,0 +1,32 @@
+<div class="row verticalMargin">
+  <div class="col-1 col-lg-2 col-md-2"></div>
+  <div class="col-10 col-lg-8 col-md-8">
+    <h3 class="lightblue">Create new game:</h3>
+    <form [formGroup]="newGameForm" novalidate>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter a game name"
+               formControlName="name" required>
+        <div *ngIf="_name.invalid && (_name.touched || _name.dirty)">
+          <small *ngIf="_name.errors?.required" class="invalid">Field is required</small>
+        </div>
+        <div *ngIf="takenGame(_name.value)">
+          <small class="invalid">Game name is taken</small>
+        </div>
+      </div>
+      <div class="form-control">
+        <tag-input formControlName="tags" (onTextChange)="onTextChange($event)">
+          <tag-input-dropdown [autocompleteItems]="tags">
+          </tag-input-dropdown>
+        </tag-input>
+      </div>
+      <small class="lightslategrey">press enter to add tag</small>
+      <br>
+      <div *ngIf="!takenGame(_name.value)">
+        <button type="button" class="btn btn-primary" *ngIf="!_name.errors?.required" (click)="click()">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="col-1 col-lg-2 col-md-2"></div>
+</div>

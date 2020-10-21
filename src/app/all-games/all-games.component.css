@@ -1,0 +1,33 @@
+.verticalMargin{
+  margin: 10px 0;
+}
+
+.lightblue{
+  color: lightblue;
+}
+
+.white{
+  color: white;
+}
+
+.text-align{
+  text-align: center;
+}
+
+.height{
+  height: 60px;
+}
+
+.ellipsis{
+  background-color: dimgray;
+  border: 1px solid dimgray;
+  text-align: center;
+  border-radius: 16px;
+  height: auto;
+  line-height: 34px;
+  word-wrap: break-word;
+}
+
+.m{
+
+}

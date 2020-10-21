@@ -1,0 +1,34 @@
+<div class="row verticalMargin">
+  <div class="col-2"></div>
+  <h3 class="col-8 text-align lightblue">
+    Games:
+  </h3>
+  <div class="col-2"></div>
+</div>
+<div class="row verticalMargin">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <div class="row tic-row" *ngIf="games">
+      <div *ngFor="let game of games" class="border border-secondary col-lg-4 col-md-6 col-sm-12 white">
+        <div class="verticalMargin">Game name: {{game.name}}</div>
+        <div *ngIf="game.tags[0]">
+          <div>Game tags:</div>
+          <div class="row">
+            <div *ngFor="let tag of game.tags" class="ellipsis col-lg-4 col-md-4 col-6">
+              {{tag}}
+            </div>
+          </div>
+          <br>
+        </div>
+        <div *ngIf="!game.tags[0]">
+          <div>No tags.</div>
+          <br></div>
+          <button type="button" class="btn btn-primary verticalMargin" (click)="click(game)">
+            Join
+          </button>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="col-2"></div>
+</div>

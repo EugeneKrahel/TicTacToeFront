@@ -1,0 +1,46 @@
+.container {
+  width: 330px;
+  overflow: hidden;
+  margin: 50px auto 0 auto;
+}
+
+.container h1 {
+  display: block;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.container .box {
+  float: left;
+  width: 100px;
+  height: 100px;
+  border: 1px solid black;
+  transition: all .25s ease-in-out;
+  font-size: 85px;
+  text-align: center;
+  line-height: 100px;
+  cursor: pointer;
+  color: white;
+}
+
+.container .box:hover {
+  background: lightblue;
+  color: dimgrey;
+}
+
+.win {
+  background: aqua;
+  color: blue;
+}
+
+.container .modal {
+  float: left;
+  width: 80%;
+  height: 300px;
+  border: 1px solid black;
+  transition: all .25s ease-in-out;
+  font-size: 85px;
+  text-align: center;
+  line-height: 100px;
+  cursor: pointer;
+}

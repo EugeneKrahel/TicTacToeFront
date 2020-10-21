@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="../app.component.css">
+<div class="row verticalMargin">
+  <div class="col-1 col-lg-2 col-md-2"></div>
+  <div class="col-10 col-lg-8 col-md-8">
+    <h3 class="lightblue">Search by tag:</h3>
+    <div class="form-group">
+      <label>
+        <input type="text" class="form-control" placeholder="Enter tag"
+               [(ngModel)]="searchTag">
+      </label>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="search()">
+      Search
+    </button>
+  </div>
+  <div class="col-1 col-lg-2 col-md-2"></div>
+</div>
