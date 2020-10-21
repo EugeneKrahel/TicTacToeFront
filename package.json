@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -25,6 +25,7 @@
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "angular-ng-autocomplete": "^2.0.1",
     "bit": "^1.0.20",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "ngx-chips": "^2.2.0",
     "rxjs": "~6.6.0",
