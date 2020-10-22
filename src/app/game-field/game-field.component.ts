@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as socketIo from 'socket.io-client';
 import {PayloadDto} from '../dto/payload.dto';
 import {StateContent} from '../models/stateContent';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {NgModalContentComponent} from '../ng-modal-content/ng-modal-content.component';
 
 @Component({
@@ -28,8 +28,9 @@ export class GameFieldComponent implements OnInit {
     this.socket.on('playroom_out', (data: PayloadDto) => this.handleMessage(data));
     const stateContent: StateContent = history.state.data;
     this.payload.gameName = stateContent.name;
+    this.payload.isCross = stateContent.isHost;
     this.isCross = stateContent.isHost;
-    this.isTurnEnabled = stateContent.isHost;
+    this.isTurnEnabled = false;
     this.socket.emit('playroom', this.payload);
   }
 
@@ -48,7 +49,7 @@ export class GameFieldComponent implements OnInit {
     }
     if (this.isWin()) {
       this.open('You Win!');
-    } else if (!this.isWin() && this.isDraw()){
+    } else if (!this.isWin() && this.isDraw()) {
       this.open('Draw');
     }
   }
@@ -56,14 +57,16 @@ export class GameFieldComponent implements OnInit {
   handleMessage(data: PayloadDto): void {
     console.log(data);
     const boxNum = data.lineMove * 3 + data.columnMove;
-    if (!isNaN(boxNum) && !this.boxValue[boxNum]) {
+    if (this.isCross !== data.isCross) {
       this.isTurnEnabled = true;
+    }
+    if (!isNaN(boxNum) && !this.boxValue[boxNum]) {
       this.boxValue[boxNum] = this.isCross ? this.Zero : this.Cross;
       console.log(boxNum);
       console.log(this.boxValue);
       if (this.isWin()) {
         this.open('You Lose!');
-      } else if (!this.isWin() && this.isDraw()){
+      } else if (!this.isWin() && this.isDraw()) {
         this.open('Draw');
       }
     }
@@ -77,9 +80,8 @@ export class GameFieldComponent implements OnInit {
       (this.boxValue[3] === this.boxValue[4] && this.boxValue[4] === this.boxValue[5] && this.boxValue[5] !== undefined) ||
       (this.boxValue[6] === this.boxValue[7] && this.boxValue[7] === this.boxValue[8] && this.boxValue[8] !== undefined) ||
       (this.boxValue[0] === this.boxValue[4] && this.boxValue[4] === this.boxValue[8] && this.boxValue[8] !== undefined) ||
-      (this.boxValue[2] === this.boxValue[4] && this.boxValue[4] === this.boxValue[6] && this.boxValue[6] !== undefined))
-    {
-     return true;
+      (this.boxValue[2] === this.boxValue[4] && this.boxValue[4] === this.boxValue[6] && this.boxValue[6] !== undefined)) {
+      return true;
     }
   }
 
@@ -97,4 +99,3 @@ export class GameFieldComponent implements OnInit {
     modalRef.componentInstance.winOrLose = winOrLose;
   }
 }
-
