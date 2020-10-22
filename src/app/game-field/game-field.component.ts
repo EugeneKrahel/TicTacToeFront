@@ -92,6 +92,7 @@ export class GameFieldComponent implements OnInit {
   }
 
   open(winOrLose: string): void {
+    this.socket.close();
     const modalRef = this.modalService.open(NgModalContentComponent);
     modalRef.componentInstance.winOrLose = winOrLose;
   }
