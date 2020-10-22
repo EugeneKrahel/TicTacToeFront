@@ -46,7 +46,6 @@ export class GameFieldComponent implements OnInit {
     } else {
       this.boxValue[boxNum] = this.Zero;
     }
-    console.log(this.boxValue[boxNum]);
     if (this.isWin()) {
       this.open('You Win!');
     } else if (!this.isWin() && this.isDraw()){
@@ -60,6 +59,8 @@ export class GameFieldComponent implements OnInit {
     if (!isNaN(boxNum) && !this.boxValue[boxNum]) {
       this.isTurnEnabled = true;
       this.boxValue[boxNum] = this.isCross ? this.Zero : this.Cross;
+      console.log(boxNum);
+      console.log(this.boxValue);
       if (this.isWin()) {
         this.open('You Lose!');
       } else if (!this.isWin() && this.isDraw()){
