@@ -54,6 +54,7 @@ export class GameFieldComponent implements OnInit {
   }
 
   handleMessage(data: PayloadDto): void {
+    console.log(data);
     const boxNum = data.lineMove * 3 + data.columnMove;
     if (!isNaN(boxNum) && !this.boxValue[boxNum]) {
       this.isTurnEnabled = true;
