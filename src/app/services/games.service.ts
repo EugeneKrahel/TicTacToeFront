@@ -16,18 +16,18 @@ export class GamesService {
   }
 
   findAllGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://localhost:3000/games');
+    return this.http.get<Game[]>('https://ilearning-tic-tac-toe-back.herokuapp.com/games');
   }
 
   save(game: Game): Observable<Game> {
-    return this.http.post<Game>('http://localhost:3000/games', game, this.httpOptions);
+    return this.http.post<Game>('https://ilearning-tic-tac-toe-back.herokuapp.com/games', game, this.httpOptions);
   }
 
   delete(game: Game): Observable<void> {
-    return this.http.delete<void>(`http://localhost:3000/games?name=${game.name}`);
+    return this.http.delete<void>(`https://ilearning-tic-tac-toe-back.herokuapp.com/games?name=${game.name}`);
   }
 
   findGameByTag(tagPattern: string): Observable<Game[]> {
-    return  this.http.get<Game[]>(`http://localhost:3000/games/search?name=${tagPattern}`);
+    return  this.http.get<Game[]>(`https://ilearning-tic-tac-toe-back.herokuapp.com/games/search?name=${tagPattern}`);
   }
 }

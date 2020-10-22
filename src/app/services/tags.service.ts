@@ -14,15 +14,15 @@ export class TagsService {
   }
 
   findAllTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>('http://localhost:3000/tags');
+    return this.http.get<Tag[]>('https://ilearning-tic-tac-toe-back.herokuapp.com/tags');
   }
 
   search(namePattern: string): Observable<Tag[]> {
-    return  this.http.get<Tag[]>(`http://localhost:3000/tags/search?name=${namePattern}`);
+    return  this.http.get<Tag[]>(`https://ilearning-tic-tac-toe-back.herokuapp.com/tags/search?name=${namePattern}`);
   }
 
   save(tag: Tag): Observable<Tag> {
-    return this.http.post<Tag>('http://localhost:3000/tags', tag, this.httpOptions);
+    return this.http.post<Tag>('https://ilearning-tic-tac-toe-back.herokuapp.com/tags', tag, this.httpOptions);
   }
 
 }
