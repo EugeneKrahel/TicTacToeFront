@@ -46,6 +46,7 @@ export class GameFieldComponent implements OnInit {
     } else {
       this.boxValue[boxNum] = this.Zero;
     }
+    console.log(this.boxValue[boxNum]);
     if (this.isWin()) {
       this.open('You Win!');
     } else if (!this.isWin() && this.isDraw()){
