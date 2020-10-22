@@ -21,7 +21,7 @@ export class GameFieldComponent implements OnInit {
   boxValue: string[] = new Array(9);
 
   constructor(private modalService: NgbModal) {
-    this.socket = socketIo('http://localhost:3000');
+    this.socket = socketIo('https://ilearning-tic-tac-toe-back.herokuapp.com');
   }
 
   ngOnInit(): void {
